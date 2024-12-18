@@ -2,6 +2,13 @@
 
 This project implements a deep learning solution for weather classification using both custom ResNet architecture and transfer learning approaches with Xception and DenseNet models. The project uses a subset of the BDD100K Weather Classification dataset to classify weather conditions in images.
 
+## Development Environment
+
+- **Platform**: Kaggle Notebooks
+- **Hardware**: GPU (P100/T4)
+- **Runtime Type**: Python with GPU acceleration
+- **Framework**: TensorFlow/Keras
+
 ## Dataset
 
 - **Source**: [BDD100K Weather Classification Dataset](https://www.kaggle.com/datasets/marquis03/bdd100k-weather-classification)
@@ -48,67 +55,80 @@ The following metrics are used to evaluate model performance:
 - ROC Curves
 - Training/Validation Loss & Accuracy Curves
 
-## Requirements
+## Kaggle Setup
 
-```
-# Add your requirements.txt content here
-tensorflow>=2.0.0
-numpy
-pandas
-scikit-learn
-matplotlib
-seaborn
-```
+1. Create a new notebook:
+   - Go to "Code" > "New Notebook"
+   - Select "GPU" as the accelerator
+   - Enable internet access if needed
 
-## Project Structure
-
-```
-weather-classification/
-├── data/
-│   ├── train/
-│   ├── val/
-│   └── test/
-├── models/
-│   ├── custom_resnet.py
-│   └── transfer_learning.py
-├── utils/
-│   ├── data_loader.py
-│   └── metrics.py
-├── notebooks/
-│   ├── exploratory_analysis.ipynb
-│   └── model_evaluation.ipynb
-└── README.md
+2. Dataset Integration:
+```python
+# Add dataset to your notebook
+# Using the Kaggle GUI: Add data > Search for "bdd100k-weather-classification"
 ```
 
-## Usage
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/Weather-Classification-NN-Project.git
-cd Weather-Classification-NN-Project
+3. Required Package Imports:
+```python
+import tensorflow as tf
+import numpy as np
+import pandas as pd
+from sklearn.metrics import confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
+## Project Structure (Kaggle Notebook)
+
+```
+📦 weather-classification-notebook
+ ┣ 📂 input
+ ┃ ┗ 📂 bdd100k-weather-classification
+ ┣ 📂 working
+ ┃ ┣ 📂 models
+ ┃ ┣ 📂 results
+ ┃ ┗ 📂 visualizations
+ ┗ 📜 weather-classification.ipynb
 ```
 
-3. Download the dataset:
-- Download from [Kaggle](https://www.kaggle.com/datasets/marquis03/bdd100k-weather-classification)
-- Place the data in the `data/` directory
+## Implementation Steps
 
-4. Train the models:
-```bash
-python train.py --model [resnet|xception|densenet] --epochs 50
+1. Data Preparation:
+```python
+# Load and preprocess the data
+# Split into train/validation/test sets
+# Apply necessary augmentation
 ```
 
-5. Evaluate the models:
-```bash
-python evaluate.py --model [resnet|xception|densenet] --weights path/to/weights
+2. Model Training:
+```python
+# Train custom ResNet
+# Fine-tune Xception
+# Fine-tune DenseNet
 ```
 
+3. Evaluation:
+```python
+# Generate confusion matrices
+# Calculate metrics
+# Plot ROC curves
+```
 
-## Contributing
+## Usage Notes
 
-Feel free to open issues or submit pull requests if you find any bugs or have suggestions for improvements.
+- Make sure to select GPU accelerator in Kaggle notebook settings
+- Save intermediate model weights using `model.save()`
+- Download important visualizations and results to local machine
+- Use Kaggle's version control to track changes
 
+## References
+
+- [BDD100K Dataset Paper](https://arxiv.org/abs/1805.04687)
+- [ResNet Paper](https://arxiv.org/abs/1512.03385)
+- [Xception Paper](https://arxiv.org/abs/1610.02357)
+- [DenseNet Paper](https://arxiv.org/abs/1608.06993)
+
+## Acknowledgments
+
+- BDD100K dataset creators
+- Kaggle for providing GPU resources
